@@ -8,14 +8,13 @@ double functionToApprox(double x)
 
 double approx(double a, double b, double q, double epsilon)
 {
-    double xprev, xcurr, temp;
+    double xprev, xcurr;
     xprev = a;
     xcurr = a - functionToApprox(a) * q / (functionToApprox(a) - functionToApprox(a - q));
     while (fabs(xcurr - xprev) >= epsilon)
     {
-        temp = xcurr;
-        xcurr = xprev - functionToApprox(xprev) * q / (functionToApprox(xprev) - functionToApprox(xprev - q));
-        xprev = temp;
+        xprev = xcurr;
+        xcurr = xcurr - functionToApprox(xprev) * q / (functionToApprox(xprev) - functionToApprox(xprev - q));
     }
     return xcurr;
 }
